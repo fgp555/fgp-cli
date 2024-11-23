@@ -1,0 +1,27 @@
+{
+  "name": "fgp-cli",
+  "version": "0.0.1",
+  "description": "CLI for generating resources in NestJS projects",
+  "main": "./dist/index.js",
+  "bin": {
+    "fgp": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [
+    "nestjs",
+    "cli",
+    "resource"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "@nestjs/mapped-types": "*",
+    "commander": "^10.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.0",
+    "typescript": "^5.2.2"
+  }
+}
