@@ -10,17 +10,13 @@ module.exports = function (projectName = "fgp-express-ts-app") {
   fs.mkdirSync(projectPath, { recursive: true });
   process.chdir(projectPath);
 
-  // Inicializa proyecto con TypeScript
+  // Instala dependencias
   execSync("npm init -y", { stdio: "inherit" });
   execSync("npm install express cors morgan", { stdio: "inherit" });
-  execSync("npm install -D typescript ts-node @types/node @types/express @types/cors @types/morgan", {
-    stdio: "inherit",
-  });
+  execSync("npm install -D typescript ts-node @types/node @types/express @types/cors @types/morgan nodemon", { stdio: "inherit" });
 
-  // Crea tsconfig.json
-  fs.writeFileSync(
-    "tsconfig.json",
-    `
+  // tsconfig
+  fs.writeFileSync("tsconfig.json", `
 {
   "compilerOptions": {
     "target": "ES6",
@@ -31,144 +27,59 @@ module.exports = function (projectName = "fgp-express-ts-app") {
     "strict": true
   }
 }
-`.trim()
-  );
+`.trim());
 
-  // Estructura de carpetas
+  // src folders
   fs.mkdirSync("src");
-  fs.mkdirSync("src/routes");
-  fs.mkdirSync("src/controllers");
+  fs.mkdirSync("src/user");
 
   // server.ts
-  fs.writeFileSync(
-    "src/server.ts",
-    `
-import express from 'express';
-import morgan from 'morgan';
-import cors from 'cors';
-import userRoutes from './routes/user.routes';
+  const serverPath = path.join(__dirname, "../templates/express-ts/server.ts");
+  fs.writeFileSync("server.ts", fs.readFileSync(serverPath, "utf-8"));
 
-const app = express();
+  // Controller
+  const ctrlPath = path.join(__dirname, "../templates/express-ts/user.controller.ts");
+  fs.writeFileSync("src/user/user.controller.ts", fs.readFileSync(ctrlPath, "utf-8"));
 
-app.use(cors());
-app.use(morgan('dev'));
-app.use(express.json());
+  // Routes
+  const routesPath = path.join(__dirname, "../templates/express-ts/user.routes.ts");
+  fs.writeFileSync("src/user/user.routes.ts", fs.readFileSync(routesPath, "utf-8"));
 
-app.use('/api/users', userRoutes);
+  // Service
+  const servicePath = path.join(__dirname, "../templates/express-ts/user.service.ts");
+  fs.writeFileSync("src/user/user.service.ts", fs.readFileSync(servicePath, "utf-8"));
 
-app.listen(3000, () => {
-  console.log('✅ Servidor listo en http://localhost:3000');
-});
-`.trim()
-  );
+  // Repository
+  const repoPath = path.join(__dirname, "../templates/express-ts/user.repository.ts");
+  fs.writeFileSync("src/user/user.repository.ts", fs.readFileSync(repoPath, "utf-8"));
 
-  // routes/user.routes.ts
-  fs.writeFileSync(
-    "src/routes/user.routes.ts",
-    `
-import { Router } from 'express';
-import * as controller from '../controllers/user.controller';
+  // .gitignore
+  const gitignorePath = path.join(__dirname, "../templates/gitignore.txt");
+  fs.writeFileSync(".gitignore", fs.readFileSync(gitignorePath, "utf-8"));
 
-const router = Router();
+  // method.http
+  const httpPath = path.join(__dirname, "../templates/method.http");
+  fs.writeFileSync("method.http", fs.readFileSync(httpPath, "utf-8"));
 
-router.get('/', controller.findAll);
-router.post('/', controller.create);
-router.put('/:id', controller.update);
-router.delete('/:id', controller.remove);
-
-export default router;
-`.trim()
-  );
-
-  // controllers/user.controller.ts
-  fs.writeFileSync(
-    "src/controllers/user.controller.ts",
-    `
-interface User {
-  id: number;
-  name: string;
-  email: string;
-}
-
-let users: User[] = [];
-let id = 1;
-
-export const findAll = (_req: any, res: any) => res.json(users);
-
-export const create = (req: any, res: any) => {
-  const user: User = { id: id++, ...req.body };
-  users.push(user);
-  res.status(201).json(user);
-};
-
-export const update = (req: any, res: any) => {
-  const index = users.findIndex(u => u.id == req.params.id);
-  if (index === -1) return res.status(404).json({ msg: 'No encontrado' });
-  users[index] = { ...users[index], ...req.body };
-  res.json(users[index]);
-};
-
-export const remove = (req: any, res: any) => {
-  users = users.filter(u => u.id != req.params.id);
-  res.json({ msg: 'Eliminado' });
-};
-`.trim()
-  );
-
-  // package.json: script para compilar y ejecutar
+  // package.json scripts
   const pkg = JSON.parse(fs.readFileSync("package.json", "utf-8"));
   pkg.scripts = {
-    dev: "ts-node src/server.ts",
+    dev: "ts-node server.ts",
     build: "tsc",
-    start: "node dist/server.js",
+    start: "node dist/server.js"
   };
   fs.writeFileSync("package.json", JSON.stringify(pkg, null, 2));
 
-  // Crea .gitignore
-  fs.writeFileSync(
-    ".gitignore",
-    `
-        node_modules
-        dist
-        .env
-        *.log
-        *.local
-        .vscode
-        .idea
-        .DS_Store
-        `.trim()
-  );
-
-  // Crea method.http
-  fs.writeFileSync(
-    "method.http",
-`
-### Obtener todos los usuarios
-GET http://localhost:3000/api/users
-Content-Type: application/json
-
-### Crear un nuevo usuario
-POST http://localhost:3000/api/users
-Content-Type: application/json
-
-{
-    "name": "Juan",
-    "email": "juan@example.com"
-}
-
-### Actualizar un usuario
-PUT http://localhost:3000/api/users/1
-Content-Type: application/json
-
-{
-    "name": "Juan Actualizado"
-}
-
-### Eliminar un usuario
-DELETE http://localhost:3000/api/users/1
-`.trim()
-  );
+  // git init
+  try {
+    execSync("git init", { stdio: "inherit" });
+    execSync("git add .", { stdio: "inherit" });
+    execSync('git commit -m "init"', { stdio: "inherit" });
+    console.log("✅ Repositorio Git inicializado con commit inicial.");
+  } catch (err) {
+    console.warn("⚠️ No se pudo completar el proceso Git:", err.message);
+  }
 
   console.log(`✅ Proyecto TypeScript generado.`);
-  console.log(`\n👉 Pasos siguientes:\ncd ${projectName}\nnpm run dev`);
+  console.log(`\n👉 Siguiente paso:\ncd ${projectName}\nnpm run dev`);
 };

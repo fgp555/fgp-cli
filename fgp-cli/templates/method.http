@@ -1,0 +1,28 @@
+### Obtener todos los usuarios
+GET http://localhost:3000/api/users/findAll
+Content-Type: application/json
+
+### Obtener un usuario por ID
+GET http://localhost:3000/api/users/findOne/1
+Content-Type: application/json
+
+### Crear un nuevo usuario
+POST http://localhost:3000/api/users/create
+Content-Type: application/json
+
+{
+  "name": "Juan",
+  "email": "juan@example.com"
+}
+
+### Actualizar un usuario
+PUT http://localhost:3000/api/users/update/1
+Content-Type: application/json
+
+{
+  "name": "Juan Actualizado"
+}
+
+### Eliminar un usuario
+DELETE http://localhost:3000/api/users/remove/1
+Content-Type: application/json

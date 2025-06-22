@@ -23,7 +23,7 @@ fgp create express mi-app
 
 ```
 
-# Upload to npmjs.com
+# Publicar to npmjs.com
 
 ```sh
 # Iniciar sesión en npm (solo la primera vez)
@@ -35,8 +35,11 @@ rm -rf node_modules package-lock.json
 npm version major   # 1.0.0 → 2.0.0
 npm version minor   # 1.0.0 → 1.1.0
 npm version patch   # 1.0.0 → 1.0.1
+
 # Publicar el paquete
 npm publish
+
+npm version patch && npm publish
 
 # Si es un paquete con scope (@tuusuario/paquete) o lo quieres público:
 npm publish --access public

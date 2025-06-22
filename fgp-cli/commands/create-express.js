@@ -13,93 +13,40 @@ module.exports = function (projectName = "fgp-express-app") {
   execSync("npm init -y", { stdio: "inherit" });
   execSync("npm install express cors morgan", { stdio: "inherit" });
 
-  fs.mkdirSync("routes");
-  fs.mkdirSync("controllers");
+  fs.mkdirSync("src");
+  fs.mkdirSync("src/user");
 
-  fs.writeFileSync(
-    "server.js",
-    `
-const express = require('express');
-const morgan = require('morgan');
-const cors = require('cors');
-const userRoutes = require('./routes/user.routes');
+  // server.js en la raíz
+  const serverPath = path.join(__dirname, "../templates/express/server.js");
+  fs.writeFileSync("server.js", fs.readFileSync(serverPath, "utf-8"));
 
-const app = express();
-app.use(cors());
-app.use(morgan('dev'));
-app.use(express.json());
+  // src/index.js para registrar rutas
+  const indexPath = path.join(__dirname, "../templates/express/index.js");
+  fs.writeFileSync("src/index.js", fs.readFileSync(indexPath, "utf-8"));
 
-app.use('/api/users', userRoutes);
+  // Controller
+  const ctrlPath = path.join(__dirname, "../templates/express/user/user.controller.js");
+  fs.writeFileSync("src/user/user.controller.js", fs.readFileSync(ctrlPath, "utf-8"));
 
-app.listen(3000, () => {
-  console.log('✅ Servidor listo en http://localhost:3000');
-});
-`
-  );
+  // Routes
+  const routesPath = path.join(__dirname, "../templates/express/user/user.routes.js");
+  fs.writeFileSync("src/user/user.routes.js", fs.readFileSync(routesPath, "utf-8"));
 
-  fs.writeFileSync(
-    "routes/user.routes.js",
-    `
-const express = require('express');
-const router = express.Router();
-const controller = require('../controllers/user.controller');
+  // Service
+  const servicePath = path.join(__dirname, "../templates/express/user/user.service.js");
+  fs.writeFileSync("src/user/user.service.js", fs.readFileSync(servicePath, "utf-8"));
 
-router.get('/', controller.findAll);
-router.post('/', controller.create);
-router.put('/:id', controller.update);
-router.delete('/:id', controller.remove);
+  // Repository
+  const repoPath = path.join(__dirname, "../templates/express/user/user.repository.js");
+  fs.writeFileSync("src/user/user.repository.js", fs.readFileSync(repoPath, "utf-8"));
 
-module.exports = router;
-`
-  );
+  // .gitignore
+  const gitignorePath = path.join(__dirname, "../templates/gitignore.txt");
+  fs.writeFileSync(".gitignore", fs.readFileSync(gitignorePath, "utf-8"));
 
-  fs.writeFileSync(
-    "controllers/user.controller.js",
-    `
-let users = [];
-let id = 1;
-
-exports.findAll = (req, res) => res.json(users);
-
-exports.create = (req, res) => {
-  const user = { id: id++, ...req.body };
-  users.push(user);
-  res.status(201).json(user);
-};
-
-exports.update = (req, res) => {
-  const index = users.findIndex(u => u.id == req.params.id);
-  if (index === -1) return res.status(404).json({ msg: 'No encontrado' });
-  users[index] = { ...users[index], ...req.body };
-  res.json(users[index]);
-};
-
-exports.remove = (req, res) => {
-  users = users.filter(u => u.id != req.params.id);
-  res.json({ msg: 'Eliminado' });
-};
-`
-  );
-
-  // Crea .gitignore
-  fs.writeFileSync(
-    ".gitignore",
-    `
-      node_modules
-      dist
-      .env
-      *.log
-      *.local
-      .vscode
-      .idea
-      .DS_Store
-      `.trim()
-  );
-
-  // Crea method.http desde plantilla
-  const templatePath = path.join(__dirname, "../templates/method-template.http");
-  const methodHttpContent = fs.readFileSync(templatePath, "utf-8");
-  fs.writeFileSync("method.http", methodHttpContent);
+  // method.http
+  const methodPath = path.join(__dirname, "../templates/method.http");
+  fs.writeFileSync("method.http", fs.readFileSync(methodPath, "utf-8"));
 
   console.log(`✅ Proyecto generado.`);
   console.log(`\n👉 Siguiente paso:\ncd ${projectName}\nnpm start`);

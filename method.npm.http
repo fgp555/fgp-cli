@@ -1,0 +1,42 @@
+### 📦 Último día de descargas de fgp-cli
+GET https://api.npmjs.org/downloads/point/last-day/fgp-cli
+Content-Type: application/json
+
+### 📦 Última semana de descargas de fgp-cli
+GET https://api.npmjs.org/downloads/point/last-week/fgp-cli
+Content-Type: application/json
+
+### 📦 Último mes de descargas de fgp-cli
+GET https://api.npmjs.org/downloads/point/last-month/fgp-cli
+Content-Type: application/json
+
+### 📈 Rango de fechas específicas (por ejemplo, 1 al 20 de junio)
+GET https://api.npmjs.org/downloads/range/2025-06-01:2025-06-20/fgp-cli
+Content-Type: application/json
+
+
+### ==========  ==========
+
+### Último mes de descargas (punto único)
+GET https://api.npmjs.org/downloads/point/last-month/fgp-cli
+Content-Type: application/json
+
+### Descargas por día en el último mes
+GET https://api.npmjs.org/downloads/range/last-month/fgp-cli
+Content-Type: application/json
+
+### Descargas en un rango específico
+GET https://api.npmjs.org/downloads/range/2024-01-01:2024-06-01/fgp-cli
+Content-Type: application/json
+
+### Metadatos del paquete desde el registro de NPM
+GET https://registry.npmjs.org/fgp-cli
+Content-Type: application/json
+
+### Última versión publicada
+GET https://registry.npmjs.org/fgp-cli/latest
+Content-Type: application/json
+
+### Información de una versión específica (ej. 1.0.4)
+GET https://registry.npmjs.org/fgp-cli/1.0.4
+Content-Type: application/json

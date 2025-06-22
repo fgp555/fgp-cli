@@ -1,3 +1,5 @@
+// fgp-cli/commands/generate.js
+
 const fs = require("fs");
 const path = require("path");
 
@@ -7,66 +9,29 @@ module.exports = function (item) {
     return;
   }
 
-  if (item === ".gitignore") {
-    const content = `
-node_modules
-dist
-.env
-*.log
-*.local
-.vscode
-.idea
-.DS_Store
-`;
-    const filePath = path.join(process.cwd(), ".gitignore");
+  const templateMap = {
+    ".gitignore": "gitignore.txt",
+    "method.http": "method.http",
+    ".env": "env.txt",
+  };
 
-    if (fs.existsSync(filePath)) {
-      console.log("⚠️ Ya existe un archivo .gitignore en este proyecto.");
+  if (Object.keys(templateMap).includes(item)) {
+    const templateFile = path.join(__dirname, "../templates", templateMap[item]);
+    const targetFile = path.join(process.cwd(), item);
+
+    if (fs.existsSync(targetFile)) {
+      console.log(`⚠️ Ya existe un archivo ${item} en este proyecto.`);
       return;
     }
 
-    fs.writeFileSync(filePath, content.trimStart());
-    console.log("✅ Archivo .gitignore generado.");
-  }
-
-  else if (item === "method.http") {
-    const filePath = path.join(process.cwd(), "method.http");
-
-    if (fs.existsSync(filePath)) {
-      console.log("⚠️ Ya existe un archivo method.http en este proyecto.");
-      return;
+    try {
+      const content = fs.readFileSync(templateFile, "utf-8");
+      fs.writeFileSync(targetFile, content.trimStart());
+      console.log(`✅ Archivo ${item} generado desde plantilla.`);
+    } catch (err) {
+      console.log(`❌ No se pudo leer la plantilla para ${item}: ${err.message}`);
     }
-
-    const content = `
-### Obtener todos los usuarios
-GET http://localhost:3000/api/users
-Content-Type: application/json
-
-### Crear un nuevo usuario
-POST http://localhost:3000/api/users
-Content-Type: application/json
-
-{
-  "name": "Juan",
-  "email": "juan@example.com"
-}
-
-### Actualizar un usuario
-PUT http://localhost:3000/api/users/1
-Content-Type: application/json
-
-{
-  "name": "Juan Actualizado"
-}
-
-### Eliminar un usuario
-DELETE http://localhost:3000/api/users/1
-`;
-    fs.writeFileSync(filePath, content.trimStart());
-    console.log("✅ Archivo method.http generado.");
-  }
-
-  else {
+  } else {
     console.log(`❌ No se reconoce qué generar con '${item}'`);
   }
 };

@@ -93,8 +93,6 @@ if (args[0] === "--help" || args[0] === "-h") {
 } else if (args[0] === "create" && args[1] === "sqlite") {
   const projectName = args[2] || "fgp-sqlite-app";
   require("../commands/create-sqlite")(projectName);
-} else if ((args[0] === "generate" || args[0] === "g") && args[1] === ".env") {
-  require("../commands/generate-env")();
 } else if (args[0] === "create" && args[1] === "mail") {
   const projectName = args[2] || "fgp-mail-app";
   require("../commands/create-mail")(projectName);
