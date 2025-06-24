@@ -30,7 +30,7 @@ Uso:
 
   fgp generate .env
   fgp generate .gitignore
-  fgp generate method.http`;
+  fgp generate request.http`;
 
 if (args[0] === "--help" || args[0] === "-h") {
   console.log(helpMessage);

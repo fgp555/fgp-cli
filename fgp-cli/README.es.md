@@ -68,12 +68,12 @@ fgp create grpc [nombre]              # Servidor gRPC (JS/TS)
 
 # 🧪 Generadores
 fgp generate .gitignore
-fgp generate method.http
+fgp generate request.http
 fgp generate .env
 
 # 🔁 Atajos
 fgp g .gitignore
-fgp g method.http
+fgp g request.http
 fgp g .env
 
 # 📘 Ayuda

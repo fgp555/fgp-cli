@@ -1,5 +1,10 @@
 # 📦 Documentación para publicar un paquete en NPM
 
+```sh
+# Publicar un paquete en NPM
+npm version patch && npm publish
+```
+
 ## 🧪 Desarrollo local
 
 ```bash
@@ -38,8 +43,6 @@ npm version patch   # 1.0.0 → 1.0.1
 
 # Publicar el paquete
 npm publish
-
-npm version patch && npm publish
 
 # Si es un paquete con scope (@tuusuario/paquete) o lo quieres público:
 npm publish --access public

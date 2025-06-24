@@ -103,9 +103,9 @@ dist
 `.trim()
   );
 
-  // method.http
+  // request.http
   fs.writeFileSync(
-    "method.http",
+    "request.http",
     `
 ### Consulta GraphQL
 POST http://localhost:4000/graphql

@@ -11,7 +11,7 @@ module.exports = function (item) {
 
   const templateMap = {
     ".gitignore": "gitignore.txt",
-    "method.http": "method.http",
+    "request.http": "request.http",
     ".env": "env.txt",
   };
 

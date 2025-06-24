@@ -65,9 +65,9 @@ node_modules
 `.trim()
   );
 
-  // method.http
+  // request.http
   fs.writeFileSync(
-    "method.http",
+    "request.http",
     `
 ### GraphQL Playground
 GET http://localhost:4000/graphql

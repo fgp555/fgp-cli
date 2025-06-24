@@ -90,9 +90,9 @@ dist
 `.trim()
   );
 
-  // method.http
+  // request.http
   fs.writeFileSync(
-    "method.http",
+    "request.http",
     `
 ### GET principal
 GET http://localhost:3000/

@@ -63,9 +63,9 @@ node_modules
 `.trim()
   );
 
-  // method.http (simulación de operaciones si fuera una API)
+  // request.http (simulación de operaciones si fuera una API)
   fs.writeFileSync(
-    "method.http",
+    "request.http",
     `
 # Este archivo es informativo. Ejecuta: node index.js
 `.trim()

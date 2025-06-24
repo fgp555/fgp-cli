@@ -94,9 +94,9 @@ app.listen(process.env.PORT, () => {
 `.trim()
   );
 
-  // method.http
+  // request.http
   fs.writeFileSync(
-    "method.http",
+    "request.http",
     `
 ### Enviar correo
 POST http://localhost:3000/send

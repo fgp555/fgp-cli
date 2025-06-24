@@ -16,13 +16,13 @@ module.exports = function (projectName = "fgp-express-app") {
   fs.mkdirSync("src");
   fs.mkdirSync("src/user");
 
-  // server.js en la raíz
-  const serverPath = path.join(__dirname, "../templates/express/server.js");
-  fs.writeFileSync("server.js", fs.readFileSync(serverPath, "utf-8"));
+  // main.js en la raíz
+  const mainPath = path.join(__dirname, "../templates/express/main.js");
+  fs.writeFileSync("src/main.js", fs.readFileSync(mainPath, "utf-8"));
 
-  // src/index.js para registrar rutas
-  const indexPath = path.join(__dirname, "../templates/express/index.js");
-  fs.writeFileSync("src/index.js", fs.readFileSync(indexPath, "utf-8"));
+  // src/app.js para registrar rutas
+  const appPath = path.join(__dirname, "../templates/express/app.js");
+  fs.writeFileSync("src/app.js", fs.readFileSync(appPath, "utf-8"));
 
   // Controller
   const ctrlPath = path.join(__dirname, "../templates/express/user/user.controller.js");
@@ -44,9 +44,17 @@ module.exports = function (projectName = "fgp-express-app") {
   const gitignorePath = path.join(__dirname, "../templates/gitignore.txt");
   fs.writeFileSync(".gitignore", fs.readFileSync(gitignorePath, "utf-8"));
 
-  // method.http
-  const methodPath = path.join(__dirname, "../templates/method.http");
-  fs.writeFileSync("method.http", fs.readFileSync(methodPath, "utf-8"));
+  // request.http
+  const methodPath = path.join(__dirname, "../templates/request.http");
+  fs.writeFileSync("request.http", fs.readFileSync(methodPath, "utf-8"));
+
+  // package.json scripts
+  const pkg = JSON.parse(fs.readFileSync("package.json", "utf-8"));
+  pkg.scripts = {
+    dev: "node --watch src/main.js",
+    start: "node src/main.js",
+  };
+  fs.writeFileSync("package.json", JSON.stringify(pkg, null, 2));
 
   console.log(`✅ Proyecto generado.`);
   console.log(`\n👉 Siguiente paso:\ncd ${projectName}\nnpm start`);

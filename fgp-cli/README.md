@@ -8,6 +8,13 @@ Fast project generator with support for **Node.js**, **TypeScript**, **HTML**, *
 
 ---
 
+## 🎬 Demo Video
+
+Watch the full demo on YouTube:  
+📺 [FGP CLI - Fast Project Generator](https://youtu.be/btgmyqPEEhE)
+
+---
+
 ## 📦 Installation
 
 ```bash
@@ -20,61 +27,61 @@ npm uninstall -g fgp-cli
 
 ```sh
 # 🧱 Express Projects
-fgp create express [name]             # Express (JavaScript)
-fgp create express-ts [name]          # Express (TypeScript)
+fgp create express myapp             # Express (JavaScript)
+fgp create express-ts myapp          # Express (TypeScript)
 
 # ⚡ Socket.io
-fgp create socket.io [name]           # Express + Socket.io (JS)
-fgp create socket.io-ts [name]        # Express + Socket.io (TS)
+fgp create socket.io myapp           # Express + Socket.io (JS)
+fgp create socket.io-ts myapp        # Express + Socket.io (TS)
 
 # 🔌 GraphQL
-fgp create graphql [name]             # GraphQL (JS)
-fgp create graphql-ts [name]          # GraphQL (TS)
+fgp create graphql myapp             # GraphQL (JS)
+fgp create graphql-ts myapp          # GraphQL (TS)
 
 # 💬 WhatsApp Webhook
-fgp create whatsapp [name]            # WhatsApp Webhook (JS)
-fgp create whatsapp-ts [name]         # WhatsApp Webhook (TS)
+fgp create whatsapp myapp            # WhatsApp Webhook (JS)
+fgp create whatsapp-ts myapp         # WhatsApp Webhook (TS)
 
 # 🎨 HTML
-fgp create html [name]                # Basic HTML project
-fgp create html-tailwind [name]       # HTML + Tailwind via CDN
+fgp create html myapp                # Basic HTML project
+fgp create html-tailwind myapp       # HTML + Tailwind via CDN
 
 # 🐳 Docker
-fgp create docker [name]              # Basic Dockerfile
+fgp create docker myapp              # Basic Dockerfile
 
 # 🧠 Databases
-fgp create mongoose [name]            # MongoDB with Mongoose
-fgp create postgres [name]            # PostgreSQL
-fgp create mysql [name]               # MySQL
-fgp create sqlite [name]              # SQLite
+fgp create mongoose myapp            # MongoDB with Mongoose
+fgp create postgres myapp            # PostgreSQL
+fgp create mysql myapp               # MySQL
+fgp create sqlite myapp              # SQLite
 
 # 🔐 OAuth
-fgp create oauth [name]               # OAuth 2.0 with Google
+fgp create oauth myapp               # OAuth 2.0 with Google
 
 # 📬 Mail
-fgp create mail [name]                # Send emails with Nodemailer
+fgp create mail myapp                # Send emails with Nodemailer
 
 # 📦 Create npm package
-fgp create npm [name]                 # npm package structure
+fgp create npm myapp                 # npm package structure
 
 # 📡 Kafka
-fgp create kafka [name]               # Kafka basics with Node.js
+fgp create kafka myapp               # Kafka basics with Node.js
 
 # 🧊 Redis
-fgp create redis [name]               # Redis connection
+fgp create redis myapp               # Redis connection
 
 # 🛰️ gRPC
-fgp create grpc [name]                # gRPC server (JS/TS)
+fgp create grpc myapp                # gRPC server (JS/TS)
 
 
 # Quick Generators
 fgp generate .gitignore               # .gitignore file
-fgp generate method.http              # REST Client test file
+fgp generate request.http              # REST Client test file
 fgp generate .env                     # Basic .env file
 
 # Shortcuts
 fgp g .gitignore
-fgp g method.http
+fgp g request.http
 fgp g .env
 
 

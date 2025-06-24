@@ -85,8 +85,8 @@ const userSchema = new mongoose.Schema({
 module.exports = mongoose.model("User", userSchema);
 `.trim());
 
-  // method.http
-  fs.writeFileSync("method.http", `
+  // request.http
+  fs.writeFileSync("request.http", `
 ### GET all users
 GET http://localhost:3000/api/users
 
@@ -100,7 +100,7 @@ Content-Type: application/json
 }
 
 ### PUT update user
-PUT http://localhost:3000/api/users/{{id}}
+PUT http://localhost:3000/api/users/685a9370616903f7e9d840d5
 Content-Type: application/json
 
 {
@@ -108,7 +108,7 @@ Content-Type: application/json
 }
 
 ### DELETE user
-DELETE http://localhost:3000/api/users/{{id}}
+DELETE http://localhost:3000/api/users/685a9370616903f7e9d840d5
 `.trim());
 
   // Scripts en package.json

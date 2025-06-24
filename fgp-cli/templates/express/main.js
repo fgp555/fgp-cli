@@ -2,7 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 
-const userRoutes = require('./src/user/user.routes');
+const userRoutes = require('./user/user.routes');
 
 const app = express();
 

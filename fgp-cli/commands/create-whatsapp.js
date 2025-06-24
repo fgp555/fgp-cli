@@ -78,9 +78,9 @@ node_modules
 `.trim()
   );
 
-  // method.http
+  // request.http
   fs.writeFileSync(
-    "method.http",
+    "request.http",
     `
 ### Simular verificación webhook
 GET http://localhost:3000/webhook?hub.mode=subscribe&hub.verify_token=fgp_verify_token&hub.challenge=12345
