@@ -1,4 +1,0 @@
-```sh
-
-npm run generate
-```

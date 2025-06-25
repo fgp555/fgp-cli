@@ -1,67 +1,94 @@
-# 📦 Documentación para publicar un paquete en NPM
+<!-- fgp-cli\readme.md -->
 
-```sh
-# Publicar un paquete en NPM
-npm version patch && npm publish
-```
+# 🧰 FGP CLI
 
-## 🧪 Desarrollo local
+Fast project generator with support for **Node.js**, **TypeScript**, **HTML**, **Webhooks**, **GraphQL**, **Docker**, **OAuth**, **gRPC**, and more.
 
-```bash
-# Vuelve a vincular globalmente tu CLI local
-npm link
+> Create apps with a single command, in seconds 🚀
 
-# Desvincula globalmente el paquete (si ya estaba)
-npm unlink -g
+---
 
-# Verifica que esté instalado globalmente
-npm list -g
+## 🎬 Demo Video
 
-# Verifica que el comando esté disponible
-where fgp
+Watch the full demo on YouTube:  
+📺 [FGP CLI - Fast Project Generator](https://youtu.be/btgmyqPEEhE)
 
-# Probar comandos
-fgp --help
-fgp --version
-fgp create express
-fgp create express mi-app
+---
 
-```
-
-# Publicar to npmjs.com
-
-```sh
-# Iniciar sesión en npm (solo la primera vez)
-npm adduser
-
-# Limpiar antes de publicar
-rm -rf node_modules package-lock.json
-
-npm version major   # 1.0.0 → 2.0.0
-npm version minor   # 1.0.0 → 1.1.0
-npm version patch   # 1.0.0 → 1.0.1
-
-# Publicar el paquete
-npm publish
-
-# Si es un paquete con scope (@tuusuario/paquete) o lo quieres público:
-npm publish --access public
-```
-
-# 📁 Ver rutas útiles
+## 📦 Installation
 
 ```bash
-# Carpeta global de instalación de módulos
-npm root -g
-# Ejemplo: C:\Users\fgp55\AppData\Roaming\npm\node_modules
-
-# Prefijo global de instalación
-npm config get prefix
-# Ejemplo: C:\Users\fgp55\AppData\Roaming\npm
-
+npm install -g fgp-cli
+npm update -g fgp-cli
+npm uninstall -g fgp-cli
 ```
 
-# 💡 Sugerencias y mejoras futuras
+# Comandos
 
-> - fgp create from https://github.com/fgp/templates/mi-template
-> - fgp init
+```sh
+# 🧱 Express Projects
+fgp create express myapp             # Express (JavaScript)
+fgp create express-ts myapp          # Express (TypeScript)
+fgp create typeorm myapp             # Express (TypeScript)
+
+# ⚡ Socket.io
+fgp create socket.io myapp           # Express + Socket.io (JS)
+fgp create socket.io-ts myapp        # Express + Socket.io (TS)
+
+# 🔌 GraphQL
+fgp create graphql myapp             # GraphQL (JS)
+fgp create graphql-ts myapp          # GraphQL (TS)
+
+# 💬 WhatsApp Webhook
+fgp create whatsapp myapp            # WhatsApp Webhook (JS)
+fgp create whatsapp-ts myapp         # WhatsApp Webhook (TS)
+
+# 🎨 HTML
+fgp create html myapp                # Basic HTML project
+fgp create html-tailwind myapp       # HTML + Tailwind via CDN
+
+# 🐳 Docker
+fgp create docker myapp              # Basic Dockerfile
+
+# 🧠 Databases
+fgp create mongoose myapp            # MongoDB with Mongoose
+fgp create postgres myapp            # PostgreSQL
+fgp create mysql myapp               # MySQL
+fgp create sqlite myapp              # SQLite
+
+# 🔐 OAuth
+fgp create oauth myapp               # OAuth 2.0 with Google
+
+# 📬 Mail
+fgp create mail myapp                # Send emails with Nodemailer
+
+# 📦 Create npm package
+fgp create npm myapp                 # npm package structure
+
+# 📡 Kafka
+fgp create kafka myapp               # Kafka basics with Node.js
+
+# 🧊 Redis
+fgp create redis myapp               # Redis connection
+
+# 🛰️ gRPC
+fgp create grpc myapp                # gRPC server (JS/TS)
+
+
+# Quick Generators
+fgp generate .gitignore               # .gitignore file
+fgp generate request.http              # REST Client test file
+fgp generate .env                     # Basic .env file
+
+# Shortcuts
+fgp g .gitignore
+fgp g request.http
+fgp g .env
+
+
+# Help
+fgp --help     # Show help
+fgp -h
+fgp --version  # Show installed version
+fgp -v
+```
