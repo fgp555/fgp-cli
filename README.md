@@ -27,15 +27,18 @@ npm uninstall -g fgp-cli
 
 ```sh
 # 🛠️ Generators
-fgp generate module [name]          # 📦 Full module (controller, service, routes, etc.)
 fgp generate .env                   # ⚙️ Basic .env file
 fgp generate .gitignore             # 🙈 .gitignore file
 fgp generate request.http           # 🌐 REST Client test file
+fgp generate module [name]          # 📦 Full module (controller, service, routes, etc.)
+fgp generate component UserPage src/components
+
 # Shortcuts
-fgp g module [name]                 # 📦 Full module (controller, service, routes, etc.)
+fgp g .env
 fgp g .gitignore
 fgp g request.http
-fgp g .env
+fgp g module [name]                 # 📦 Full module (controller, service, routes, etc.)
+fgp g component UserPage src/components
 
 # 🧱 Express Projects
 fgp create express myapp            # Express (JavaScript)

@@ -8,10 +8,11 @@ const helpMessage = `
 ${pkg.name} v${pkg.version}
 
 Generadores:
-  fgp generate module [nombre]
   fgp generate .env
   fgp generate .gitignore
   fgp generate request.http
+  fgp generate module user
+  fgp generate component ProductPage src/components
 
 Proyectos:
   fgp create express [nombre]

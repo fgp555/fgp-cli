@@ -9,6 +9,49 @@ module.exports = function (item) {
     return;
   }
 
+  // Componente React
+  if (item === "component") {
+    const name = process.argv[4];
+    const baseTarget = process.argv[5] || "."; // Carpeta destino base (ej: src/components)
+    const target = path.join(baseTarget, name); // Siempre crea una carpeta con el nombre del componente
+
+    if (!name) {
+      console.log("❌ Debes indicar el nombre del componente. Ejemplo: fgp generate component UserPage src/components");
+      return;
+    }
+
+    const tsxContent = `import "./${name}.scss";
+
+export const ${name} = () => {
+  return (
+    <div className="${name}">
+      {/* ${name} component */}
+    </div>
+  );
+};
+`;
+
+    const scssContent = `// ${name}.scss
+
+.${name} {
+  padding: 1rem;
+  background-color: #f9f9f9;
+}
+`;
+
+    try {
+      fs.mkdirSync(target, { recursive: true });
+      fs.writeFileSync(path.join(target, `${name}.tsx`), tsxContent);
+      fs.writeFileSync(path.join(target, `${name}.scss`), scssContent);
+      console.log(`✅ Componente ${name} generado en ${target}`);
+    } catch (err) {
+      console.log(`❌ Error al generar componente: ${err.message}`);
+    }
+
+    return;
+  }
+
+  // Archivos desde plantillas (como .gitignore, .env, etc.)
   const templateMap = {
     ".gitignore": "gitignore.txt",
     "request.http": "request.http",
@@ -31,7 +74,9 @@ module.exports = function (item) {
     } catch (err) {
       console.log(`❌ No se pudo leer la plantilla para ${item}: ${err.message}`);
     }
-  } else {
-    console.log(`❌ No se reconoce qué generar con '${item}'`);
+
+    return;
   }
+
+  console.log(`❌ No se reconoce qué generar con '${item}'`);
 };
