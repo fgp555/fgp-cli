@@ -26,65 +26,64 @@ npm uninstall -g fgp-cli
 # Comandos
 
 ```sh
-# 🧱 Express Projects
-fgp create express myapp             # Express (JavaScript)
-fgp create express-ts myapp          # Express (TypeScript)
-fgp create typeorm myapp             # Express (TypeScript)
-
-# ⚡ Socket.io
-fgp create socket.io myapp           # Express + Socket.io (JS)
-fgp create socket.io-ts myapp        # Express + Socket.io (TS)
-
-# 🔌 GraphQL
-fgp create graphql myapp             # GraphQL (JS)
-fgp create graphql-ts myapp          # GraphQL (TS)
-
-# 💬 WhatsApp Webhook
-fgp create whatsapp myapp            # WhatsApp Webhook (JS)
-fgp create whatsapp-ts myapp         # WhatsApp Webhook (TS)
-
-# 🎨 HTML
-fgp create html myapp                # Basic HTML project
-fgp create html-tailwind myapp       # HTML + Tailwind via CDN
-
-# 🐳 Docker
-fgp create docker myapp              # Basic Dockerfile
-
-# 🧠 Databases
-fgp create mongoose myapp            # MongoDB with Mongoose
-fgp create postgres myapp            # PostgreSQL
-fgp create mysql myapp               # MySQL
-fgp create sqlite myapp              # SQLite
-
-# 🔐 OAuth
-fgp create oauth myapp               # OAuth 2.0 with Google
-
-# 📬 Mail
-fgp create mail myapp                # Send emails with Nodemailer
-
-# 📦 Create npm package
-fgp create npm myapp                 # npm package structure
-
-# 📡 Kafka
-fgp create kafka myapp               # Kafka basics with Node.js
-
-# 🧊 Redis
-fgp create redis myapp               # Redis connection
-
-# 🛰️ gRPC
-fgp create grpc myapp                # gRPC server (JS/TS)
-
-
-# Quick Generators
-fgp generate .gitignore               # .gitignore file
-fgp generate request.http              # REST Client test file
-fgp generate .env                     # Basic .env file
-
+# 🛠️ Generators
+fgp generate module [name]          # 📦 Full module (controller, service, routes, etc.)
+fgp generate .env                   # ⚙️ Basic .env file
+fgp generate .gitignore             # 🙈 .gitignore file
+fgp generate request.http           # 🌐 REST Client test file
 # Shortcuts
+fgp g module [name]                 # 📦 Full module (controller, service, routes, etc.)
 fgp g .gitignore
 fgp g request.http
 fgp g .env
 
+# 🧱 Express Projects
+fgp create express myapp            # Express (JavaScript)
+fgp create express-ts myapp         # Express (TypeScript)
+fgp create typeorm myapp            # Express + TypeORM
+
+# 🧠 Databases
+fgp create mongoose myapp           # MongoDB with Mongoose
+fgp create postgres myapp           # PostgreSQL
+fgp create mysql myapp              # MySQL
+fgp create sqlite myapp             # SQLite
+
+# ⚡ Socket.io
+fgp create socket.io myapp          # Express + Socket.io (JavaScript)
+fgp create socket.io-ts myapp       # Express + Socket.io (TypeScript)
+
+# 🔌 GraphQL
+fgp create graphql myapp            # GraphQL (JavaScript)
+fgp create graphql-ts myapp         # GraphQL (TypeScript)
+
+# 💬 WhatsApp Webhook
+fgp create whatsapp myapp           # WhatsApp Webhook (JavaScript)
+fgp create whatsapp-ts myapp        # WhatsApp Webhook (TypeScript)
+
+# 🎨 HTML
+fgp create html myapp               # Basic HTML project
+fgp create html-tailwind myapp      # HTML + Tailwind via CDN
+
+# 🐳 Docker
+fgp create docker myapp             # Basic Dockerfile
+
+# 🧊 Redis
+fgp create redis myapp              # Redis integration
+
+# 📡 Kafka
+fgp create kafka myapp              # Kafka setup with Node.js
+
+# 🔐 OAuth
+fgp create oauth myapp              # OAuth 2.0 with Google
+
+# 📬 Mail
+fgp create mail myapp               # Send emails with Nodemailer
+
+# 📦 npm Package
+fgp create npm myapp                # npm package starter
+
+# 🛰️ gRPC
+fgp create grpc myapp               # gRPC server (JavaScript/TypeScript)
 
 # Help
 fgp --help     # Show help

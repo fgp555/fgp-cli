@@ -4,11 +4,23 @@ const path = require("path");
 const pkg = require(path.join(__dirname, "..", "package.json"));
 const args = process.argv.slice(2);
 
-const helpMessage = `${pkg.name} v${pkg.version}
-Uso:
+const helpMessage = `
+${pkg.name} v${pkg.version}
+
+Generadores:
+  fgp generate module [nombre]
+  fgp generate .env
+  fgp generate .gitignore
+  fgp generate request.http
+
+Proyectos:
   fgp create express [nombre]
   fgp create express-ts [nombre]
   fgp create typeorm [nombre]
+  fgp create mongoose [nombre]
+  fgp create postgres [nombre]
+  fgp create mysql [nombre]
+  fgp create sqlite [nombre]
   fgp create socket.io [nombre]
   fgp create socket.io-ts [nombre]
   fgp create graphql [nombre]
@@ -21,17 +33,10 @@ Uso:
   fgp create redis [nombre]
   fgp create kafka [nombre]
   fgp create oauth [nombre]
-  fgp create mongoose [nombre]
-  fgp create postgres [nombre]
-  fgp create mysql [nombre]
-  fgp create sqlite [nombre]
   fgp create mail [nombre]
   fgp create npm [nombre]
   fgp create grpc [nombre]
-
-  fgp generate .env
-  fgp generate .gitignore
-  fgp generate request.http`;
+`;
 
 if (args[0] === "--help" || args[0] === "-h") {
   console.log(helpMessage);
@@ -54,7 +59,13 @@ if (args[0] === "--help" || args[0] === "-h") {
   require("../commands/create-socketio-ts")(projectName);
 } else if (args[0] === "generate" || args[0] === "g") {
   const item = args[1];
-  require("../commands/generate")(item);
+  if (item === "module") {
+    const moduleName = args[2];
+    const target = args[3] || `./${moduleName}`;
+    require("../commands/generate-module")(moduleName, target);
+  } else {
+    require("../commands/generate")(item);
+  }
 } else if (args[0] === "create" && args[1] === "graphql") {
   const projectName = args[2] || "fgp-graphql-app";
   require("../commands/create-graphql")(projectName);
