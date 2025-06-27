@@ -7,7 +7,7 @@ export const ENV = {
   DB_PORT: parseInt(process.env.DB_PORT || "5432", 10),
   DB_DATABASE: process.env.DB_DATABASE || "postgres",
   DB_USERNAME: process.env.DB_USERNAME || "postgres",
-  DB_PASSWORD: process.env.DB_PASSWORD || "admin",
+  DB_PASSWORD: process.env.DB_TYPE === "mysql" ? process.env.DB_PASSWORD || "" : process.env.DB_PASSWORD,
 
   SEED_DATA: process.env.SEED_DATA === "true",
   DROPSCHEMA: process.env.DROPSCHEMA === "true",
