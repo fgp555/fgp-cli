@@ -19,6 +19,10 @@ module.exports = function (projectName = "fgp-express-app") {
   // credentials.json
   fs.writeFileSync("credentials.json", `{}`.trim(), "utf-8");
 
+  // .gitignore
+  const gitignorePath = path.join(__dirname, "../templates/google-sheet/gitignore.txt");
+  fs.writeFileSync(".gitignore", fs.readFileSync(gitignorePath, "utf-8"));
+
   // index.js
   const indexPath = path.join(__dirname, "../templates/google-sheet/index.js");
   fs.writeFileSync("index.js", fs.readFileSync(indexPath, "utf-8"));
@@ -30,10 +34,6 @@ module.exports = function (projectName = "fgp-express-app") {
   // request.http
   const requestPath = path.join(__dirname, "../templates/google-sheet/request.http");
   fs.writeFileSync("request.http", fs.readFileSync(requestPath, "utf-8"));
-
-  // .gitignore
-  const gitignorePath = path.join(__dirname, "../templates/google-sheet/.gitignore");
-  fs.writeFileSync(".gitignore", fs.readFileSync(gitignorePath, "utf-8"));
 
   // .env
   const envPath = path.join(__dirname, "../templates/google-sheet/.env");
