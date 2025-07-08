@@ -10,7 +10,7 @@ Fast project generator with support for **Node.js**, **TypeScript**, **HTML**, *
 
 ## 🌐 Visit My Website
 
-🔗 [https://frankgp.com](https://frankgp.com) — Explore tools, tips, and development resources by **Frank GP**.
+🔗 [https://frankgp.com](https://frankgp.com?npm) — Explore tools, tips, and development resources by **Frank GP**.
 
 ---
 
