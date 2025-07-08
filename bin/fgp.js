@@ -18,6 +18,7 @@ Proyectos:
   fgp create express [nombre]
   fgp create express-ts [nombre]
   fgp create typeorm [nombre]
+  fgp create google-sheet [nombre]
   fgp create mongoose [nombre]
   fgp create postgres [nombre]
   fgp create mysql [nombre]
@@ -46,6 +47,9 @@ if (args[0] === "--help" || args[0] === "-h") {
 } else if (args[0] === "create" && args[1] === "express") {
   const projectName = args[2] || "fgp-express-app";
   require("../commands/create-express")(projectName);
+} else if (args[0] === "create" && args[1] === "google-sheet") {
+  const projectName = args[2] || "fgp-google-sheet-app";
+  require("../commands/create-google-sheet")(projectName);
 } else if (args[0] === "create" && args[1] === "express-ts") {
   const projectName = args[2] || "fgp-express-ts-app";
   require("../commands/create-express-ts")(projectName);
