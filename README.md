@@ -16,8 +16,10 @@ Fast project generator with support for **Node.js**, **TypeScript**, **HTML**, *
 
 ## 🎬 Demo Video
 
-Watch the full demo on YouTube:  
-📺 [FGP CLI - Fast Project Generator](https://youtu.be/btgmyqPEEhE)
+Watch the full demo on YouTube:
+
+- [📺 FGP CLI - Fast Project Generator](https://youtu.be/btgmyqPEEhE)
+- [📺 fgp create google-sheet](https://youtu.be/qyjSOd1Xf18)
 
 ---
 
@@ -49,7 +51,12 @@ fgp g component UserPage src/components
 # 🧱 Express Projects
 fgp create express myapp            # Express (JavaScript)
 fgp create express-ts myapp         # Express (TypeScript)
+fgp create express-auth myapp       # Express (TypeScript)
 fgp create typeorm myapp            # Express + TypeORM
+
+# 🔗 Google
+fgp create google-sheet myapp       # Google Sheet integration
+fgp create google-drive myapp       # Google Drive integration
 
 # 🧠 Databases
 fgp create mongoose myapp           # MongoDB with Mongoose
