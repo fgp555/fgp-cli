@@ -1,0 +1,59 @@
+### 🔐 LOGIN
+# @name postLogin
+@accessToken={{postLogin.response.body.accessToken}}
+@refreshToken={{postLogin.response.body.refreshToken}}
+
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@example.com",
+  "password": "123456"
+}
+
+### 🔍 DECODE JWT (accessToken o refreshToken)
+POST http://localhost:3000/api/auth/decode
+Content-Type: application/json
+
+{
+  "token": "{{accessToken}}"
+}
+
+### 📄 GET ALL USERS (PROTECTED)
+GET http://localhost:3000/api/users
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+### 📝 REGISTER NEW USER
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "johndoe@example.com",
+  "password": "mypass123"
+}
+
+### ❌ DELETE USER BY ID (PROTECTED)
+DELETE http://localhost:3000/api/users/1
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+### 🔁 REFRESH ACCESS TOKEN
+# @name refreshAccess
+@newAccessToken={{refreshAccess.response.body.accessToken}}
+
+POST http://localhost:3000/api/auth/refresh-token
+Content-Type: application/json
+
+{
+  "refreshToken": "{{refreshToken}}"
+}
+
+### 🔐 LOGOUT
+POST http://localhost:3000/api/auth/logout
+Content-Type: application/json
+
+{
+  "refreshToken": "{{refreshToken}}"
+}
