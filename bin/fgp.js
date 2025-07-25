@@ -30,7 +30,7 @@ const createCommands = {
   mail: "create-mail",
   npm: "create-npm",
   grpc: "create-grpc",
-  gRPC: "create-grpc", // alias
+  gRPC: "create-grpc",
 };
 
 const helpMessage = `

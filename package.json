@@ -1,6 +1,6 @@
 {
   "name": "fgp-cli",
-  "version": "2025.7.23",
+  "version": "2025.7.25",
   "description": "CLI para generar proyectos rápidos con soporte para Express, TypeScript, GraphQL, HTML, Webhooks, Docker, OAuth, Redis, Kafka, y más.",
   "bin": {
     "fgp": "./bin/fgp.js"
