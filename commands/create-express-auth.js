@@ -11,15 +11,19 @@ module.exports = function (projectName = "fgp-express-app") {
   process.chdir(projectPath);
 
   execSync("npm init -y", { stdio: "inherit" });
-  execSync("npm install express cors morgan", { stdio: "inherit" });
-  execSync("npm install jsonwebtoken", { stdio: "inherit" });
+  execSync("npm install express cors morgan dotenv", { stdio: "inherit" });
+  execSync("npm install jsonwebtoken express-session passport-google-oauth20 passport", { stdio: "inherit" });
 
   fs.mkdirSync("_doc");
   fs.mkdirSync("src");
 
-  // main.js en la raíz
+  // main.js
   const mainPath = path.join(__dirname, "../templates/express-auth/main.js");
   fs.writeFileSync("src/main.js", fs.readFileSync(mainPath, "utf-8"));
+
+  // oauth.js
+  const oauthPath = path.join(__dirname, "../templates/express-auth/oauth.js");
+  fs.writeFileSync("src/oauth.js", fs.readFileSync(oauthPath, "utf-8"));
 
   // request.http
   const methodPath = path.join(__dirname, "../templates/express-auth/request.http");
@@ -28,6 +32,10 @@ module.exports = function (projectName = "fgp-express-app") {
   // readme.md
   const readmePath = path.join(__dirname, "../templates/express-auth/readme.md");
   fs.writeFileSync("readme.md", fs.readFileSync(readmePath, "utf-8"));
+
+  // env.txt
+  const envPath = path.join(__dirname, "../templates/express-auth/env.txt");
+  fs.writeFileSync(".env", fs.readFileSync(envPath, "utf-8"));
 
   // .gitignore
   const gitignorePath = path.join(__dirname, "../templates/gitignore.txt");
