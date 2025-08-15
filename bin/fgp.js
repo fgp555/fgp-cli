@@ -9,6 +9,7 @@ const createCommands = {
   express: "create-express",
   "express-ts": "create-express-ts",
   "express-auth": "create-express-auth",
+  "express-expo": "create-express-expo",
   typeorm: "create-typeorm",
   "google-sheet": "create-google-sheet",
   "socket.io": "create-socketio",
