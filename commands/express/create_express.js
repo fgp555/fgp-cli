@@ -1,3 +1,5 @@
+// commands\express\create-express.js
+
 const fs = require("fs");
 const path = require("path");
 const { execSync } = require("child_process");
@@ -17,31 +19,31 @@ module.exports = function (projectName = "fgp-express-app") {
   fs.mkdirSync("src/user");
 
   // main.js en la raíz
-  const mainPath = path.join(__dirname, "../templates/express/main.js");
+  const mainPath = path.join(__dirname, "../../templates/express/main.js");
   fs.writeFileSync("src/main.js", fs.readFileSync(mainPath, "utf-8"));
 
   // Controller
-  const ctrlPath = path.join(__dirname, "../templates/express/user/user.controller.js");
+  const ctrlPath = path.join(__dirname, "../../templates/express/user/user.controller.js");
   fs.writeFileSync("src/user/user.controller.js", fs.readFileSync(ctrlPath, "utf-8"));
 
   // Routes
-  const routesPath = path.join(__dirname, "../templates/express/user/user.routes.js");
+  const routesPath = path.join(__dirname, "../../templates/express/user/user.routes.js");
   fs.writeFileSync("src/user/user.routes.js", fs.readFileSync(routesPath, "utf-8"));
 
   // Service
-  const servicePath = path.join(__dirname, "../templates/express/user/user.service.js");
+  const servicePath = path.join(__dirname, "../../templates/express/user/user.service.js");
   fs.writeFileSync("src/user/user.service.js", fs.readFileSync(servicePath, "utf-8"));
 
   // Repository
-  const repoPath = path.join(__dirname, "../templates/express/user/user.repository.js");
+  const repoPath = path.join(__dirname, "../../templates/express/user/user.repository.js");
   fs.writeFileSync("src/user/user.repository.js", fs.readFileSync(repoPath, "utf-8"));
 
   // .gitignore
-  const gitignorePath = path.join(__dirname, "../templates/gitignore.txt");
+  const gitignorePath = path.join(__dirname, "../../templates/gitignore.txt");
   fs.writeFileSync(".gitignore", fs.readFileSync(gitignorePath, "utf-8"));
 
   // request.http
-  const methodPath = path.join(__dirname, "../templates/request.http");
+  const methodPath = path.join(__dirname, "../../templates/request.http");
   fs.writeFileSync("request.http", fs.readFileSync(methodPath, "utf-8"));
 
   // package.json scripts
