@@ -2,101 +2,68 @@ const fs = require("fs");
 const path = require("path");
 const { execSync } = require("child_process");
 
-module.exports = function (projectName = "fgp-docker-node") {
+module.exports = function (projectName = "fgp-docker-app") {
   const projectPath = path.join(process.cwd(), projectName);
-  console.log(`🚀 Creando proyecto Docker + Node.js en ${projectPath}`);
+  const templatesPath = path.join(__dirname, "../templates");
 
+  console.log(`🚀 Creando proyecto Docker en ${projectPath}`);
+
+  // Crear directorio del proyecto
   fs.mkdirSync(projectPath, { recursive: true });
   process.chdir(projectPath);
 
-  // Archivos base
-  execSync("npm init -y", { stdio: "inherit" });
-  execSync("npm install express", { stdio: "inherit" });
+  // Copiar toda la carpeta docker de una vez
+  const dockerTemplatesPath = path.join(templatesPath, "docker");
+  fs.cpSync(dockerTemplatesPath, ".", { recursive: true, force: true });
 
-  // index.js
-  fs.writeFileSync(
-    "index.js",
-    `
-const express = require("express");
-const app = express();
-const PORT = process.env.PORT || 3000;
+  // Configurar NPM dentro de la carpeta my_app
+  const myAppPath = path.join(projectPath, "my_app");
 
-app.use(express.json());
+  // OPCIÓN 1: Cambiar directorio y ejecutar npm
+  console.log("📦 Instalando dependencias...");
+  process.chdir(myAppPath);
+  execSync("npm install", { stdio: "inherit" });
 
-app.get("/", (_req, res) => {
-  res.send("Hola desde Docker 🚀");
-});
+  // Volver al directorio raíz del proyecto
+  process.chdir(projectPath);
 
-app.listen(PORT, () => {
-  console.log(\`Servidor corriendo en http://localhost:\${PORT}\`);
-});
-`.trim()
-  );
-
-  // package.json scripts
-  const pkg = JSON.parse(fs.readFileSync("package.json", "utf-8"));
-  pkg.scripts.start = "node index.js";
-  fs.writeFileSync("package.json", JSON.stringify(pkg, null, 2));
-
-  // Dockerfile
-  fs.writeFileSync(
-    "Dockerfile",
-    `
-# Imagen base
-FROM node:20
-
-# Directorio de trabajo
-WORKDIR /app
-
-# Copia de dependencias
-COPY package*.json ./
-RUN npm install
-
-# Copiar código fuente
-COPY . .
-
-# Exponer puerto
-EXPOSE 3000
-
-# Comando por defecto
-CMD ["npm", "start"]
-`.trim()
-  );
-
-  // docker-compose.yml
-  fs.writeFileSync(
-    "docker-compose.yml",
-    `
-version: "3.9"
-
-services:
-  app:
-    build: .
-    ports:
-      - "3000:3000"
-    volumes:
-      - .:/app
-      - /app/node_modules
-    environment:
-      - PORT=3000
-`.trim()
-  );
-
-  // .gitignore
-  fs.writeFileSync(
-    ".gitignore",
-    `
-node_modules
-.env
-*.log
-.DS_Store
-.vscode
-.idea
-`.trim()
-  );
-
-  console.log("✅ Proyecto Node.js + Docker generado.");
-  console.log(`\n👉 Pasos siguientes:
-cd ${projectName}
-docker-compose up --build`);
+  console.log(`✅ Proyecto generado.`);
+  console.log(`\n👉 Siguientes pasos:`);
+  console.log(`cd ${projectName}`);
+  console.log(`cd my_app && npm run dev`);
+  console.log(`# O desde la raíz:`);
+  console.log(`docker-compose up`);
 };
+
+// OPCIÓN ALTERNATIVA: Usar cwd en execSync
+/*
+module.exports = function (projectName = "fgp-docker-app") {
+  const projectPath = path.join(process.cwd(), projectName);
+  const templatesPath = path.join(__dirname, "../templates");
+
+  console.log(`🚀 Creando proyecto Docker en ${projectPath}`);
+
+  // Crear directorio del proyecto
+  fs.mkdirSync(projectPath, { recursive: true });
+  process.chdir(projectPath);
+
+  // Copiar toda la carpeta docker
+  const dockerTemplatesPath = path.join(templatesPath, "docker");
+  fs.cpSync(dockerTemplatesPath, ".", { recursive: true, force: true });
+
+  // Ejecutar npm install especificando el directorio
+  const myAppPath = path.join(projectPath, "my_app");
+  console.log("📦 Instalando dependencias...");
+  execSync("npm install", { 
+    stdio: "inherit", 
+    cwd: myAppPath  // Ejecutar desde my_app
+  });
+
+  console.log(`✅ Proyecto generado.`);
+  console.log(`\n👉 Siguientes pasos:`);
+  console.log(`cd ${projectName}`);
+  console.log(`cd my_app && npm run dev`);
+  console.log(`# O usar Docker:`);
+  console.log(`docker-compose up`);
+};
+*/

@@ -6,53 +6,32 @@ const args = process.argv.slice(2);
 
 // 🧾 Tabla de comandos: [command, subcommand] => archivo a requerir
 const createCommands = {
-  // Bases de datos
-  "mongoose": "create-db-mongoose",
-  "mysql": "create-db-mysql", 
-  "postgres": "create-db-postgres",
-  "redis": "create-db-redis",
-  "sqlite": "create-db-sqlite",
-  "typeorm": "create-db-typeorm",
-  
-  // Contenedores
   "docker": "create-docker",
-  
-  // Express
-  "express": "create-express",
-  "express-auth": "create-express-auth", 
+  "express-auth": "create-express-auth",
   "express-expo": "create-express-expo",
   "express-ts": "create-express-ts",
-  
-  // Google Services
-  "oauth": "create-google-oauth",
+  "express": "create-express",
   "google-sheet": "create-google-sheet",
-  
-  // GraphQL
-  "graphql": "create-graphql",
   "graphql-ts": "create-graphql-ts",
-  
-  // gRPC
+  "graphql": "create-graphql",
   "grpc": "create-grpc",
   "gRPC": "create-grpc",
-  
-  // HTML
-  "html": "create-html",
   "html-tailwind": "create-html-tailwind",
-  
-  // Mensajería
+  "html": "create-html",
   "kafka": "create-kafka",
   "mail": "create-mail",
-  
-  // NPM
+  "mongoose": "create-mongoose",
+  "mysql": "create-mysql",
   "npm": "create-npm",
-  
-  // WebSockets
-  "socket.io": "create-socketio",
+  "oauth": "create-oauth-google",
+  "postgres": "create-postgres",
+  "redis": "create-redis",
   "socket.io-ts": "create-socketio-ts",
-  
-  // WhatsApp
-  "whatsapp": "create-whatsapp",
+  "socket.io": "create-socketio",
+  "sqlite": "create-sqlite",
+  "typeorm": "create-typeorm",
   "whatsapp-ts": "create-whatsapp-ts",
+  "whatsapp": "create-whatsapp",
 };
 
 const helpMessage = `
