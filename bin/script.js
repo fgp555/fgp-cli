@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+// bin\script.js
+
 const path = require("path");
 const pkg = require(path.join(__dirname, "..", "package.json"));
 const args = process.argv.slice(2);
@@ -7,52 +9,52 @@ const args = process.argv.slice(2);
 // 🧾 Tabla de comandos: [command, subcommand] => archivo a requerir
 const createCommands = {
   // Bases de datos
-  "mongoose": "create-db-mongoose",
-  "mysql": "create-db-mysql", 
-  "postgres": "create-db-postgres",
-  "redis": "create-db-redis",
-  "sqlite": "create-db-sqlite",
-  "typeorm": "create-db-typeorm",
+  "mongoose": "db/create_mongoose",
+  "mysql": "db/create_mysql", 
+  "postgres": "db/create_postgres",
+  "redis": "db/create_redis",
+  "sqlite": "db/create_sqlite",
+  "typeorm": "db/create_typeorm",
   
   // Contenedores
-  "docker": "create-docker",
+  "docker": "create_docker",
   
   // Express
-  "express": "create-express",
-  "express-auth": "create-express-auth", 
-  "express-expo": "create-express-expo",
-  "express-ts": "create-express-ts",
+  "express": "express/create_express",
+  "express-auth": "express/create_express-auth", 
+  "express-expo": "express/create_express-expo",
+  "express-ts": "express/create_express-ts",
   
   // Google Services
-  "oauth": "create-google-oauth",
-  "google-sheet": "create-google-sheet",
+  "oauth": "google/create_oauth",
+  "google-sheet": "google/create_sheet",
   
   // GraphQL
-  "graphql": "create-graphql",
-  "graphql-ts": "create-graphql-ts",
+  "graphql": "create_graphql",
+  "graphql-ts": "create_graphql-ts",
   
   // gRPC
-  "grpc": "create-grpc",
-  "gRPC": "create-grpc",
+  "grpc": "create_grpc",
+  "gRPC": "create_grpc",
   
   // HTML
-  "html": "create-html",
-  "html-tailwind": "create-html-tailwind",
+  "html": "create_html",
+  "html-tailwind": "create_html-tailwind",
   
   // Mensajería
-  "kafka": "create-kafka",
-  "mail": "create-mail",
+  "kafka": "create_kafka",
+  "mail": "create_mail",
   
   // NPM
-  "npm": "create-npm",
+  "npm": "create_npm",
   
   // WebSockets
-  "socket.io": "create-socketio",
-  "socket.io-ts": "create-socketio-ts",
+  "socket.io": "create_socketio",
+  "socket.io-ts": "create_socketio-ts",
   
   // WhatsApp
-  "whatsapp": "create-whatsapp",
-  "whatsapp-ts": "create-whatsapp-ts",
+  "whatsapp": "create_whatsapp",
+  "whatsapp-ts": "create_whatsapp-ts",
 };
 
 const helpMessage = `

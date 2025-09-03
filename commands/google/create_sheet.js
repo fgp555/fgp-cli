@@ -20,35 +20,35 @@ module.exports = function (projectName = "fgp-express-app") {
   fs.writeFileSync("credentials.json", `{}`.trim(), "utf-8");
 
   // .gitignore
-  const gitignorePath = path.join(__dirname, "../templates/google-sheet/gitignore.txt");
+  const gitignorePath = path.join(__dirname, "../../templates/google-sheet/gitignore.txt");
   fs.writeFileSync(".gitignore", fs.readFileSync(gitignorePath, "utf-8"));
 
   // index.js
-  const indexPath = path.join(__dirname, "../templates/google-sheet/index.js");
+  const indexPath = path.join(__dirname, "../../templates/google-sheet/index.js");
   fs.writeFileSync("index.js", fs.readFileSync(indexPath, "utf-8"));
 
   // basic.js
-  const basicPath = path.join(__dirname, "../templates/google-sheet/basic.js");
+  const basicPath = path.join(__dirname, "../../templates/google-sheet/basic.js");
   fs.writeFileSync("basic.js", fs.readFileSync(basicPath, "utf-8"));
 
   // request.http
-  const requestPath = path.join(__dirname, "../templates/google-sheet/request.http");
+  const requestPath = path.join(__dirname, "../../templates/google-sheet/request.http");
   fs.writeFileSync("request.http", fs.readFileSync(requestPath, "utf-8"));
 
   // .env
-  const envPath = path.join(__dirname, "../templates/google-sheet/.env");
+  const envPath = path.join(__dirname, "../../templates/google-sheet/.env");
   fs.writeFileSync(".env", fs.readFileSync(envPath, "utf-8"));
 
   // Controller
-  const ctrlPath = path.join(__dirname, "../templates/google-sheet/sheets/sheet.controller.js");
+  const ctrlPath = path.join(__dirname, "../../templates/google-sheet/sheets/sheet.controller.js");
   fs.writeFileSync("sheets/sheet.controller.js", fs.readFileSync(ctrlPath, "utf-8"));
 
   // Routes
-  const routesPath = path.join(__dirname, "../templates/google-sheet/sheets/sheet.routes.js");
+  const routesPath = path.join(__dirname, "../../templates/google-sheet/sheets/sheet.routes.js");
   fs.writeFileSync("sheets/sheet.routes.js", fs.readFileSync(routesPath, "utf-8"));
 
   // Service
-  const servicePath = path.join(__dirname, "../templates/google-sheet/sheets/sheet.service.js");
+  const servicePath = path.join(__dirname, "../../templates/google-sheet/sheets/sheet.service.js");
   fs.writeFileSync("sheets/sheet.service.js", fs.readFileSync(servicePath, "utf-8"));
 
   // package.json scripts
