@@ -1,5 +1,5 @@
 ```sh
-# Iniciar sesión en npm (solo la primera vez)
+# Iniciar sesión con adduser o login
 npm adduser
 npm login
 
@@ -10,13 +10,13 @@ npm unlink -g
 
 npm version patch && npm publish
 
-# Probar comandos
+# fgp commands
 where fgp
 fgp --help
 fgp --version
 ```
 
-# Notas
+## Notas
 
 ```sh
 npm version major   # 1.0.0 → 2.0.0
