@@ -2,13 +2,15 @@
 # Iniciar sesión con adduser o login
 npm adduser
 npm login
+npm whoami
 
 npm list -g
 
 npm link
 npm unlink -g
 
-npm version patch && npm publish
+npm version patch
+npm publish
 
 # fgp commands
 where fgp
